@@ -5,7 +5,6 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const mount = async (app: Express) => {
-  // Initialize Payload
   await payload.init({
     express: app,
     onInit: async () => {
