@@ -10,6 +10,16 @@ export default buildConfig({
   admin: {
     bundler: webpackBundler(),
     user: User.slug,
+    webpack: (config) => ({
+      ...config,
+      resolve: {
+        ...config.resolve,
+        alias: {
+          ...config?.resolve?.alias,
+          fs: require.resolve('./utils/mockPackage/index.ts'),
+        },
+      },
+    }),
   },
   collections: [Media, Page, User],
   db: mongooseAdapter({
