@@ -1,5 +1,5 @@
 import { CollectionConfig } from 'payload/types';
-import { formatSlug, formatSlugValidateHook } from '../../utils/formatSlug';
+import { formatSlugValidateHook } from '../../utils/formatSlug';
 import { Content, Image } from '../../blocks';
 
 export const Page: CollectionConfig = {

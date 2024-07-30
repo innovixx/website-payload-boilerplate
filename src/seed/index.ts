@@ -1,5 +1,6 @@
 import { Payload } from 'payload';
 import { seedUsers } from './users';
+
 export const seed = async (payload: Payload): Promise<void> => {
   try {
     await new Promise((resolve) => setTimeout(resolve, 10000));

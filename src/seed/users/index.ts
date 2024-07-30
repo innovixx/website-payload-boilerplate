@@ -12,8 +12,8 @@ export const seedUsers = async (payload: Payload): Promise<void> => {
         collection: User.slug,
         data: {
           ...user,
-          password: 'Pa$$w0rd!',
           _id: user.id,
+          password: 'Pa$$w0rd!',
         },
       });
     }),
