@@ -10,7 +10,6 @@ services:
       - ~/.ssh:/home/vscode/.ssh:cached
       - ~/.npmrc:/home/vscode/.npmrc:cached
     command: sleep infinity
-    network_mode: service:db
     working_dir: /workspaces/website-payload-boilerplate
 
   db:
@@ -18,6 +17,7 @@ services:
     restart: unless-stopped
     volumes:
       - mongodb-data:/data/db
+    network_mode: service:app
 
 volumes:
   mongodb-data:
