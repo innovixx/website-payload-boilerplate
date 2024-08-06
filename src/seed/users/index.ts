@@ -19,5 +19,5 @@ export const seedUsers = async (payload: Payload): Promise<void> => {
     }),
   );
 
-  payload.logger.info('Users seeded.');
+  payload.logger.info('Seeding users...Done');
 };

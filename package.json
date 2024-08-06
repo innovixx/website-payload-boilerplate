@@ -11,7 +11,7 @@
     "cleanDev": "rm -rf ./storage && cross-env PAYLOAD_DROP_DATABASE=true PAYLOAD_SEED_DATABASE=true yarn dev",
     "build:payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload build",
     "build:server": "tsc",
-    "build": "yarn copyfiles && yarn build:payload && yarn build:server",
+    "build": "copyfiles && yarn build:payload && yarn build:server",
     "serve": "cross-env PAYLOAD_CONFIG_PATH=dist/payload.config.js NODE_ENV=production node dist/index.js",
     "copyfiles": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png}\" dist/",
     "generate:types": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:types",
@@ -22,30 +22,30 @@
   },
   "dependencies": {
     "@payloadcms/bundler-webpack": "^1.0.7",
-    "@payloadcms/db-mongodb": "^1.7.0",
+    "@payloadcms/db-mongodb": "^1.7.1",
     "@payloadcms/richtext-lexical": "^0.11.2",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "payload": "^2.24.2"
+    "payload": "^2.25.0"
   },
   "devDependencies": {
-    "@innovixx/eslint-config": "^1.3.1",
+    "@innovixx/eslint-config": "^1.3.3",
     "@types/express": "^4.17.21",
-    "@types/node": "^20.3.1",
-    "@typescript-eslint/eslint-plugin": "^5.60.0",
-    "@typescript-eslint/parser": "^5.60.0",
+    "@types/node": "^20.14.14",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
     "copyfiles": "^2.4.1",
-    "eslint": "^8.43.0",
-    "eslint-plugin-import": "^2.20.0",
-    "eslint-plugin-node": "^11.0.0",
+    "eslint": "^8.57.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-sort-export-all": "^1.4.1",
     "eslint-plugin-sort-keys-fix": "^1.1.2",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
     "nodemon": "^3.1.4",
-    "ts-node": "^10.9.1",
-    "typescript": "^5.1.3"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
   },
   "lint-staged": {
     "**/*.{js,ts,jsx,tsx}": [

@@ -1,6 +1,7 @@
 import { Payload } from 'payload';
 import { seedUsers } from './users';
 import { seedMedia } from './media';
+import { seedPages } from './pages';
 
 export const seed = async (payload: Payload): Promise<void> => {
   try {
@@ -9,10 +10,10 @@ export const seed = async (payload: Payload): Promise<void> => {
 
     await seedUsers(payload);
     await seedMedia(payload);
+    await seedPages(payload);
 
-    payload.logger.info('Database Seeding Complete');
+    payload.logger.info('Seeding database...Done');
   } catch (err) {
-    console.error(err);
     payload.logger.error('Error seeding database.');
   }
 };

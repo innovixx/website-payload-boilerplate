@@ -26,5 +26,5 @@ export const seedMedia = async (payload: Payload): Promise<void> => {
     }),
   );
 
-  payload.logger.info('Media seeded.');
+  payload.logger.info('Seeding media...Done');
 };
