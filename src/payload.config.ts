@@ -22,6 +22,10 @@ export default buildConfig({
     }),
   },
   collections: [Media, Page, User],
+  cors: [
+    `${process.env.CLIENT_URL}`,
+    ...(process.env.NODE_ENV === 'development' ? ['https://studio.apollographql.com'] : []),
+  ],
   db: mongooseAdapter({
     url: `${process.env.DATABASE_URI}`,
   }),
