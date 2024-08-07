@@ -1,6 +1,8 @@
 [
   {
     "id": "66b28519efcd45214c5afb7a",
+    "createdAt": "2024-08-06T20:18:33.759Z",
+    "updatedAt": "2024-08-07T09:17:48.275Z",
     "title": "Example Page",
     "image": "66a964f15446a4d03d16237b",
     "layout": [
@@ -34,16 +36,48 @@
             "version": 1
           }
         },
-        "id": "66b28519f8ebc02f99d7a5c0",
+        "id": "66b336883bcc7945ebef8b3f",
         "blockType": "content"
+      },
+      {
+        "image": "66a964f15446a4d03d16237b",
+        "caption": {
+          "root": {
+            "children": [
+              {
+                "children": [
+                  {
+                    "detail": 0,
+                    "format": 0,
+                    "mode": "normal",
+                    "style": "",
+                    "text": "This Content",
+                    "type": "text",
+                    "version": 1
+                  }
+                ],
+                "direction": "ltr",
+                "format": "",
+                "indent": 0,
+                "type": "paragraph",
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "format": "",
+            "indent": 0,
+            "type": "root",
+            "version": 1
+          }
+        },
+        "id": "66b33bb3df9cc868f68f3949",
+        "blockType": "image"
       }
     ],
     "meta": {
       "title": "Example Page",
       "description": "This is a demo example page"
     },
-    "slug": "example-page",
-    "createdAt": "2024-08-06T20:18:33.759Z",
-    "updatedAt": "2024-08-06T20:18:33.759Z"
+    "slug": "home"
   }
 ]
