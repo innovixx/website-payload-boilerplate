@@ -8,10 +8,10 @@
   "private": true,
   "scripts": {
     "dev": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts nodemon --exec ts-node src/index.ts",
-    "cleanDev": "rm -rf ./storage && cross-env PAYLOAD_DROP_DATABASE=true PAYLOAD_SEED_DATABASE=true yarn dev",
+    "cleanDev": "rm -rf ./storage && cross-env PAYLOAD_DROP_DATABASE=true PAYLOAD_SEED_DATABASE=true pnpm dev",
     "build:payload": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload build",
     "build:server": "tsc",
-    "build": "copyfiles && yarn build:payload && yarn build:server",
+    "build": "copyfiles && pnpm build:payload && pnpm build:server",
     "serve": "cross-env PAYLOAD_CONFIG_PATH=dist/payload.config.js NODE_ENV=production node dist/index.js",
     "copyfiles": "copyfiles -u 1 \"src/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png}\" dist/",
     "generate:types": "cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload generate:types",
