@@ -48,6 +48,9 @@ export default buildConfig({
       enabled: process.env.NODE_ENV === 'production',
     }),
   ],
+  rateLimit: {
+    trustProxy: true,
+  },
   typescript: {
     outputFile: path.resolve(__dirname, 'lib/types.ts'),
   },
