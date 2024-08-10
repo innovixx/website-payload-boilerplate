@@ -16,7 +16,7 @@ export default buildConfig({
         ...config.resolve,
         alias: {
           ...config?.resolve?.alias,
-          fs: require.resolve('./utils/mockPackage/index.js'),
+          fs: path.resolve(__dirname, './utils/mockPackage/index.js'),
         },
       },
     }),
