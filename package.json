@@ -21,6 +21,7 @@
     "postinstall": "husky install"
   },
   "dependencies": {
+    "@azure/storage-blob": "^12.24.0",
     "@payloadcms/bundler-webpack": "^1.0.7",
     "@payloadcms/db-mongodb": "^1.7.1",
     "@payloadcms/plugin-cloud-storage": "^1.1.3",
