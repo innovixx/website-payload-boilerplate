@@ -10,16 +10,6 @@ export default buildConfig({
   admin: {
     bundler: webpackBundler(),
     user: User.slug,
-    webpack: (config) => ({
-      ...config,
-      resolve: {
-        ...config.resolve,
-        alias: {
-          ...config?.resolve?.alias,
-          fs: path.resolve(__dirname, './utils/mockPackage/index.js'),
-        },
-      },
-    }),
   },
   collections: [Media, Page, User],
   cors: [
