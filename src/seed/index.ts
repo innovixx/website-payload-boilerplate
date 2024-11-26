@@ -14,6 +14,6 @@ export const seed = async (payload: Payload): Promise<void> => {
 
     payload.logger.info('Seeding database...Done');
   } catch (err) {
-    payload.logger.error('Error seeding database.');
+    payload.logger.error(`Error seeding database: ${err}`);
   }
 };

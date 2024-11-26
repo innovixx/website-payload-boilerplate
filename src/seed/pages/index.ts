@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { Payload } from 'payload';
+import { CollectionSlug, Payload } from 'payload';
 import { Page } from '../../collection';
 import data from './data.json';
 
@@ -9,9 +9,10 @@ export const seedPages = async (payload: Payload): Promise<void> => {
   await Promise.all(
     data.map(async (page) => {
       await payload.create({
-        collection: Page.slug,
+        collection: Page.slug as CollectionSlug,
         data: {
           ...page,
+          // @ts-expect-error _id is not in the type
           _id: page.id,
         },
       });

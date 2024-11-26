@@ -1,4 +1,4 @@
-import { FieldHook } from 'payload/types';
+import { FieldHook } from 'payload';
 
 export const formatSlug = (val: string): string => val
   .replace(/ /g, '-')

@@ -1,15 +1,10 @@
-import { CollectionConfig } from 'payload/types';
+import { CollectionConfig, CollectionSlug } from 'payload';
 import { formatSlugValidateHook } from '../../utils/formatSlug';
 import { Content, Image } from '../../blocks';
 
 export const Page: CollectionConfig = {
   access: {
     read: (): boolean => true,
-  },
-  admin: {
-    defaultColumns: ['title', 'slug', 'createdAt'],
-    disableDuplicate: true,
-    useAsTitle: 'title',
   },
   fields: [
     {
@@ -21,7 +16,7 @@ export const Page: CollectionConfig = {
     {
       label: 'Featured Image',
       name: 'image',
-      relationTo: 'media',
+      relationTo: 'media' as CollectionSlug,
       type: 'upload',
     },
     {
