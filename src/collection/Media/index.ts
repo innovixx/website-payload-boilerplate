@@ -1,13 +1,9 @@
 import path from 'path';
-import { CollectionConfig } from 'payload/types';
+import { CollectionConfig } from 'payload';
 
 export const Media: CollectionConfig = {
   access: {
     read: (): boolean => true,
-  },
-  admin: {
-    defaultColumns: ['filename', 'mimeType', 'createdAt'],
-    useAsTitle: 'filename',
   },
   fields: [
     {
