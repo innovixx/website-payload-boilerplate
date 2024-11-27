@@ -4,6 +4,7 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import { buildConfig } from 'payload';
 import { fileURLToPath } from 'url';
 import sharp from 'sharp';
+import { azureStorage } from '@payloadcms/storage-azure';
 import { Media, Page, User } from './collection';
 import { seed } from './seed';
 
@@ -37,20 +38,19 @@ export default buildConfig({
       await seed(payload);
     }
   },
-  // plugins: [
-  //   azureStorage({
-  //     allowContainerCreate: true,
-  //     baseURL: `${process.env.AZURE_STORAGE_BASE_URL}`,
-  //     collections: {
-  //       [Media.slug]: true,
-  //     },
-  //     connectionString: `${process.env.AZURE_STORAGE_CONNECTION_STRING}`,
-  //     containerName: `${process.env.AZURE_STORAGE_CONTAINER_NAME}`,
-  //   }),
-  // ],
+  plugins: [
+    azureStorage({
+      allowContainerCreate: true,
+      baseURL: `${process.env.AZURE_STORAGE_BASE_URL}`,
+      collections: {
+        [Media.slug]: true,
+      },
+      connectionString: `${process.env.AZURE_STORAGE_CONNECTION_STRING}`,
+      containerName: `${process.env.AZURE_STORAGE_CONTAINER_NAME}`,
+      enabled: process.env.NODE_ENV === 'production',
+    }),
+  ],
   secret: process.env.PAYLOAD_SECRET || '',
-
-
   sharp,
   typescript: {
     outputFile: path.resolve(dirname, 'lib/types.ts'),
