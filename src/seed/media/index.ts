@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { CollectionSlug, Payload } from 'payload';
 import path from 'path';
 import { fileURLToPath } from 'url';

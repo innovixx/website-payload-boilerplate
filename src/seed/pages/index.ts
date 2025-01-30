@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { CollectionSlug, Payload } from 'payload';
 import { Page } from '../../collection';
 import data from './data.json';
