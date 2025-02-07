@@ -37,17 +37,17 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
-    "@innovixx/eslint-config": "^2.0.1",
+    "@innovixx/eslint-config": "^3.0.0",
     "@types/express": "^4.17.21",
     "@types/node": "^20.14.14",
-    "@types/react": "npm:types-react@19.0.0-rc.1",
-    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
     "copyfiles": "^2.4.1",
     "husky": "^9.1.5",
     "lint-staged": "^14.0.1",
     "nodemon": "^3.1.4",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.4"
+    "typescript": "^5.7.3"
   },
   "lint-staged": {
     "**/*.{js,ts,jsx,tsx}": [
