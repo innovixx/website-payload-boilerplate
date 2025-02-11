@@ -1,5 +1,5 @@
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
-import { Block, CollectionSlug } from 'payload';
+import type { Block, CollectionSlug } from 'payload';
 
 export const Image: Block = {
   fields: [

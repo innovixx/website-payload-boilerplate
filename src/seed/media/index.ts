@@ -1,4 +1,4 @@
-import { CollectionSlug, Payload } from 'payload';
+import type { CollectionSlug, Payload } from 'payload';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { Media } from '../../collection';
@@ -13,6 +13,7 @@ export const seedMedia = async (payload: Payload): Promise<void> => {
   await Promise.all(
     data.map(async (media) => {
       await payload.create({
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
         collection: Media.slug as CollectionSlug,
         data: {
           ...media,

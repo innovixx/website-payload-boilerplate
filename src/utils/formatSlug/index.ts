@@ -1,4 +1,4 @@
-import { FieldHook } from 'payload';
+import type { FieldHook } from 'payload';
 
 export const formatSlug = (val: string): string => val
   .replace(/ /g, '-')
@@ -9,11 +9,16 @@ export const formatSlugValidateHook = (fallback: string): FieldHook => ({ value,
   if (typeof value === 'string') {
     return formatSlug(value);
   }
-  const fallbackData = (data && data[fallback]) || (originalDoc && originalDoc[fallback]);
 
-  if (fallbackData && typeof fallbackData === 'string') {
+  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions, @typescript-eslint/no-unsafe-member-access
+  const fallbackData: unknown = (data?.[fallback]) || (originalDoc?.[fallback]);
+
+  if (typeof fallbackData === 'string') {
     return formatSlug(fallbackData);
   }
 
-  return value;
+  if (typeof value === 'string') {
+    return value;
+  }
+  return '';
 };

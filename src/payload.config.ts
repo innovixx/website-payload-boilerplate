@@ -24,7 +24,7 @@ export default buildConfig({
     ...(process.env.NODE_ENV === 'development' ? ['https://studio.apollographql.com'] : []),
   ],
   db: mongooseAdapter({
-    url: process.env.DATABASE_URI || '',
+    url: process.env.DATABASE_URI ?? '',
   }),
   editor: lexicalEditor({}),
   graphQL: {
@@ -33,7 +33,7 @@ export default buildConfig({
   onInit: async (payload) => {
     if (
       process.env.NODE_ENV === 'development'
-      && process.env.PAYLOAD_SEED_DATABASE
+      && (process.env.PAYLOAD_SEED_DATABASE === 'true' || process.env.PAYLOAD_SEED_DATABASE === '1')
     ) {
       await seed(payload);
     }
@@ -50,7 +50,7 @@ export default buildConfig({
       enabled: process.env.NODE_ENV === 'production',
     }),
   ],
-  secret: process.env.PAYLOAD_SECRET || '',
+  secret: process.env.PAYLOAD_SECRET ?? '',
   sharp,
   typescript: {
     outputFile: path.resolve(dirname, 'lib/types.ts'),

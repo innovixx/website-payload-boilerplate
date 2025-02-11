@@ -23,6 +23,10 @@ export const rootEslintConfig = [
     ignores: [
       ...defaultESLintIgnores,
       'src/app/(payload)/**',
+      'src/lib/types.ts',
+      'eslint.config.mjs',
+      'next.config.mjs',
+      'payload-types.ts',
     ],
   },
   {

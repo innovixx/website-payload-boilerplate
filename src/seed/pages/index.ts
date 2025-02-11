@@ -1,4 +1,4 @@
-import { CollectionSlug, Payload } from 'payload';
+import type { CollectionSlug, Payload } from 'payload';
 import { Page } from '../../collection';
 import data from './data.json';
 
@@ -8,6 +8,7 @@ export const seedPages = async (payload: Payload): Promise<void> => {
   await Promise.all(
     data.map(async (page) => {
       await payload.create({
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
         collection: Page.slug as CollectionSlug,
         data: {
           ...page,

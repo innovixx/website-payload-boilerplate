@@ -1,4 +1,4 @@
-import { CollectionConfig, CollectionSlug } from 'payload';
+import type { CollectionConfig, CollectionSlug } from 'payload';
 import { formatSlugValidateHook } from '../../utils/formatSlug';
 import { Content, Image } from '../../blocks';
 
