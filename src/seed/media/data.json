@@ -2,6 +2,7 @@
   {
     "id": "66a964f15446a4d03d16237b",
     "alt": "Payload Logo",
+    "url": "/api/media/file/payload.jpg",
     "filename": "payload.jpg",
     "mimeType": "image/jpeg",
     "filesize": 215423,
@@ -14,19 +15,21 @@
         "width": 640,
         "height": 480,
         "mimeType": "image/jpeg",
-        "filesize": 22475,
+        "filesize": 22575,
         "filename": "payload-640x480.jpg",
-        "url": "/media/payload-640x480.jpg"
+        "url": "/api/media/file/payload-640x480.jpg"
       },
       "feature": {
         "width": 1024,
         "height": 576,
         "mimeType": "image/jpeg",
-        "filesize": 47736,
+        "filesize": 47823,
         "filename": "payload-1024x576.jpg",
-        "url": "/media/payload-1024x576.jpg"
+        "url": "/api/media/file/payload-1024x576.jpg"
       }
     },
-    "url": "/media/payload.jpg"
+    "createdAt": "2025-02-11T14:13:14.868Z",
+    "updatedAt": "2025-02-11T14:13:14.868Z",
+    "thumbnailURL": "/api/media/file/payload-640x480.jpg"
   }
 ]

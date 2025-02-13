@@ -104,58 +104,69 @@ export interface Page {
   id: string;
   title: string;
   image?: (string | null) | Media;
-  layout?:
-    | (
-        | {
-            content?: {
-              root: {
-                type: string;
-                children: {
+  header: {
+    type: 'default' | 'featuredImage';
+    image?: (string | null) | Media;
+  };
+  layout?: {
+    blocks?:
+      | (
+          | {
+              content?: {
+                root: {
                   type: string;
+                  children: {
+                    type: string;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
                   version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            } | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'content';
-          }
-        | {
-            image: string | Media;
-            caption?: {
-              root: {
-                type: string;
-                children: {
+                };
+                [k: string]: unknown;
+              } | null;
+              id?: string | null;
+              blockName?: string | null;
+              blockType: 'content';
+            }
+          | {
+              image: string | Media;
+              caption?: {
+                root: {
                   type: string;
+                  children: {
+                    type: string;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
                   version: number;
-                  [k: string]: unknown;
-                }[];
-                direction: ('ltr' | 'rtl') | null;
-                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                indent: number;
-                version: number;
-              };
-              [k: string]: unknown;
-            } | null;
-            id?: string | null;
-            blockName?: string | null;
-            blockType: 'image';
-          }
-      )[]
-    | null;
+                };
+                [k: string]: unknown;
+              } | null;
+              id?: string | null;
+              blockName?: string | null;
+              blockType: 'image';
+            }
+        )[]
+      | null;
+  };
   meta?: {
     title?: string | null;
     description?: string | null;
   };
   slug?: string | null;
+  /**
+   * Placeholder pages are auto-generated and cannot be configured. You can only update the title and meta data.
+   */
+  isPlaceholder?: boolean | null;
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -284,23 +295,33 @@ export interface MediaSelect<T extends boolean = true> {
 export interface PageSelect<T extends boolean = true> {
   title?: T;
   image?: T;
+  header?:
+    | T
+    | {
+        type?: T;
+        image?: T;
+      };
   layout?:
     | T
     | {
-        content?:
+        blocks?:
           | T
           | {
-              content?: T;
-              id?: T;
-              blockName?: T;
-            };
-        image?:
-          | T
-          | {
-              image?: T;
-              caption?: T;
-              id?: T;
-              blockName?: T;
+              content?:
+                | T
+                | {
+                    content?: T;
+                    id?: T;
+                    blockName?: T;
+                  };
+              image?:
+                | T
+                | {
+                    image?: T;
+                    caption?: T;
+                    id?: T;
+                    blockName?: T;
+                  };
             };
       };
   meta?:
@@ -310,8 +331,10 @@ export interface PageSelect<T extends boolean = true> {
         description?: T;
       };
   slug?: T;
+  isPlaceholder?: T;
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

@@ -1,6 +1,7 @@
 import path from 'path';
 import { mongooseAdapter } from '@payloadcms/db-mongodb';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
+import type { CollectionSlug, Data } from 'payload';
 import { buildConfig } from 'payload';
 import { fileURLToPath } from 'url';
 import sharp from 'sharp';
@@ -17,6 +18,28 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
     user: User.slug,
+    livePreview: {
+      url: ({ data, collectionConfig }: { collectionConfig?: { slug: CollectionSlug }; data: Data & { categories?: { slug: string }[] } }) => {
+        const baseUrl = process.env.CLIENT_URL;
+
+        let previewUrl = `${baseUrl}/${data.slug}`;
+
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
+        if (collectionConfig?.slug === 'service' as CollectionSlug) {
+          previewUrl = `${baseUrl}/services/${data.slug}`;
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
+        } else if (collectionConfig?.slug === 'article' as CollectionSlug) {
+          previewUrl = `${baseUrl}/articles/${data.categories?.[0].slug}/${data.slug}`;
+        }
+
+        return `${previewUrl}${data._status === 'draft' ? '?preview=true' : ''}`;
+      },
+      collections: [
+        'page',
+        'service',
+        'article',
+      ],
+    },
   },
   collections: [Media, Page, User],
   cors: [
@@ -49,6 +72,16 @@ export default buildConfig({
       containerName: `${process.env.AZURE_STORAGE_CONTAINER_NAME}`,
       enabled: process.env.NODE_ENV === 'production',
     }),
+    /*  seoPlugin({
+      collections: [
+        'page',
+        'article',
+        'service',
+      ] as CollectionSlug[],
+      generateImage: ({ doc }: { doc: { image?: string; header?: { image?: string } } }) => doc.image ?? doc.header?.image ?? '',
+      generateTitle: ({ doc }: { doc: { title: string } }) => doc.title,
+      uploadsCollection: 'media',
+    }), */
   ],
   secret: process.env.PAYLOAD_SECRET ?? '',
   sharp,

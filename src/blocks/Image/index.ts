@@ -1,12 +1,14 @@
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
-import type { Block, CollectionSlug } from 'payload';
+import type { Block } from 'payload';
+import { blockSetting } from '../../fields/blockSetting';
 
 export const Image: Block = {
   fields: [
+    blockSetting(),
     {
       label: 'Image',
       name: 'image',
-      relationTo: 'media' as CollectionSlug,
+      relationTo: 'media',
       required: true,
       type: 'upload',
     },
@@ -15,6 +17,26 @@ export const Image: Block = {
       label: 'Caption',
       name: 'caption',
       type: 'richText',
+    },
+    {
+      name: 'imageSize',
+      type: 'select',
+      options: [
+        {
+          label: 'Original',
+          value: 'original',
+        },
+        {
+          label: 'Feature',
+          value: 'feature',
+        },
+        {
+          label: 'Card',
+          value: 'card',
+        },
+      ],
+      defaultValue: 'feature',
+      required: true,
     },
   ],
   labels: {

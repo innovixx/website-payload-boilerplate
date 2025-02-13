@@ -1,14 +1,16 @@
-import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import type { Block } from 'payload';
+import { blockSetting } from '../../fields/blockSetting';
 
 export const Content: Block = {
   fields: [
+    blockSetting(),
     {
-      editor: lexicalEditor(),
       name: 'content',
+      required: true,
       type: 'richText',
     },
   ],
+  interfaceName: 'Content',
   labels: {
     plural: 'Content Blocks',
     singular: 'Content',
