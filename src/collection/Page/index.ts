@@ -34,7 +34,8 @@ export const Page: CollectionConfig = {
     {
       type: 'tabs',
       admin: {
-        condition: (_, siblingData) => siblingData.isPlaceholder === false,
+        // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+        condition: (_, siblingData) => !siblingData.isPlaceholder,
       },
       tabs: [
         {
@@ -80,7 +81,8 @@ export const Page: CollectionConfig = {
               name: 'blocks',
               type: 'blocks',
               admin: {
-                condition: (_, siblingData) => siblingData.isPlaceholder === false,
+                // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+                condition: (_, siblingData) => !siblingData.isPlaceholder,
               },
             },
           ],
@@ -88,26 +90,10 @@ export const Page: CollectionConfig = {
       ],
     },
     {
-      fields: [
-        {
-          label: 'Title',
-          name: 'title',
-          type: 'text',
-        },
-        {
-          label: 'Description',
-          name: 'description',
-          type: 'textarea',
-        },
-      ],
-      label: 'Page Meta',
-      name: 'meta',
-      type: 'group',
-    },
-    {
       admin: {
         position: 'sidebar',
-        condition: (_, siblingData) => siblingData.isPlaceholder === false,
+        // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+        condition: (_, siblingData) => !siblingData.isPlaceholder,
       },
       hooks: {
         beforeValidate: [formatSlugValidateHook('title')],
@@ -124,7 +110,8 @@ export const Page: CollectionConfig = {
       admin: {
         description: 'Placeholder pages are auto-generated and cannot be configured. You can only update the title and meta data.',
         readOnly: true,
-        condition: (_, siblingData) => siblingData.isPlaceholder === true,
+        // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+        condition: (_, siblingData) => !!siblingData.isPlaceholder,
         position: 'sidebar',
       },
     },

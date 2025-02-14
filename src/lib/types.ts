@@ -111,27 +111,9 @@ export interface Page {
   layout?: {
     blocks?:
       | (
+          | Content
           | {
-              content?: {
-                root: {
-                  type: string;
-                  children: {
-                    type: string;
-                    version: number;
-                    [k: string]: unknown;
-                  }[];
-                  direction: ('ltr' | 'rtl') | null;
-                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-                  indent: number;
-                  version: number;
-                };
-                [k: string]: unknown;
-              } | null;
-              id?: string | null;
-              blockName?: string | null;
-              blockType: 'content';
-            }
-          | {
+              blockSettings?: BlockSettings;
               image: string | Media;
               caption?: {
                 root: {
@@ -148,16 +130,13 @@ export interface Page {
                 };
                 [k: string]: unknown;
               } | null;
+              imageSize: 'original' | 'feature' | 'card';
               id?: string | null;
               blockName?: string | null;
               blockType: 'image';
             }
         )[]
       | null;
-  };
-  meta?: {
-    title?: string | null;
-    description?: string | null;
   };
   slug?: string | null;
   /**
@@ -167,6 +146,46 @@ export interface Page {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Content".
+ */
+export interface Content {
+  blockSettings?: BlockSettings;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'content';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlockSettings".
+ */
+export interface BlockSettings {
+  margin?: {
+    marginBottom?: ('none' | 'small' | 'medium' | 'large' | 'extraLarge') | null;
+  };
+  padding?: {
+    paddingTop?: ('none' | 'small' | 'medium' | 'large') | null;
+    paddingBottom?: ('none' | 'small' | 'medium' | 'large') | null;
+    paddingLeft?: ('none' | 'small' | 'medium' | 'large') | null;
+    paddingRight?: ('none' | 'small' | 'medium' | 'large') | null;
+  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -307,34 +326,53 @@ export interface PageSelect<T extends boolean = true> {
         blocks?:
           | T
           | {
-              content?:
-                | T
-                | {
-                    content?: T;
-                    id?: T;
-                    blockName?: T;
-                  };
+              content?: T | ContentSelect<T>;
               image?:
                 | T
                 | {
+                    blockSettings?: T | BlockSettingsSelect<T>;
                     image?: T;
                     caption?: T;
+                    imageSize?: T;
                     id?: T;
                     blockName?: T;
                   };
             };
-      };
-  meta?:
-    | T
-    | {
-        title?: T;
-        description?: T;
       };
   slug?: T;
   isPlaceholder?: T;
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Content_select".
+ */
+export interface ContentSelect<T extends boolean = true> {
+  blockSettings?: T | BlockSettingsSelect<T>;
+  content?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlockSettings_select".
+ */
+export interface BlockSettingsSelect<T extends boolean = true> {
+  margin?:
+    | T
+    | {
+        marginBottom?: T;
+      };
+  padding?:
+    | T
+    | {
+        paddingTop?: T;
+        paddingBottom?: T;
+        paddingLeft?: T;
+        paddingRight?: T;
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
