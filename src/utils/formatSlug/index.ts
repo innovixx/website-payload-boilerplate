@@ -10,7 +10,6 @@ export const formatSlugValidateHook = (fallback: string): FieldHook => ({ value,
     return formatSlug(value);
   }
 
-  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions, @typescript-eslint/no-unsafe-member-access
   const fallbackData: unknown = (data?.[fallback]) || (originalDoc?.[fallback]);
 
   if (typeof fallbackData === 'string') {

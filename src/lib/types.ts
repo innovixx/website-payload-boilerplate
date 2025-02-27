@@ -6,10 +6,65 @@
  * and re-run `payload generate:types` to regenerate this file.
  */
 
+/**
+ * Supported timezones in IANA format.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "supportedTimezones".
+ */
+export type SupportedTimezones =
+  | 'Pacific/Midway'
+  | 'Pacific/Niue'
+  | 'Pacific/Honolulu'
+  | 'Pacific/Rarotonga'
+  | 'America/Anchorage'
+  | 'Pacific/Gambier'
+  | 'America/Los_Angeles'
+  | 'America/Tijuana'
+  | 'America/Denver'
+  | 'America/Phoenix'
+  | 'America/Chicago'
+  | 'America/Guatemala'
+  | 'America/New_York'
+  | 'America/Bogota'
+  | 'America/Caracas'
+  | 'America/Santiago'
+  | 'America/Buenos_Aires'
+  | 'America/Sao_Paulo'
+  | 'Atlantic/South_Georgia'
+  | 'Atlantic/Azores'
+  | 'Atlantic/Cape_Verde'
+  | 'Europe/London'
+  | 'Europe/Berlin'
+  | 'Africa/Lagos'
+  | 'Europe/Athens'
+  | 'Africa/Cairo'
+  | 'Europe/Moscow'
+  | 'Asia/Riyadh'
+  | 'Asia/Dubai'
+  | 'Asia/Baku'
+  | 'Asia/Karachi'
+  | 'Asia/Tashkent'
+  | 'Asia/Calcutta'
+  | 'Asia/Dhaka'
+  | 'Asia/Almaty'
+  | 'Asia/Jakarta'
+  | 'Asia/Bangkok'
+  | 'Asia/Shanghai'
+  | 'Asia/Singapore'
+  | 'Asia/Tokyo'
+  | 'Asia/Seoul'
+  | 'Australia/Sydney'
+  | 'Pacific/Guam'
+  | 'Pacific/Noumea'
+  | 'Pacific/Auckland'
+  | 'Pacific/Fiji';
+
 export interface Config {
   auth: {
     user: UserAuthOperations;
   };
+  blocks: {};
   collections: {
     media: Media;
     page: Page;
@@ -30,8 +85,14 @@ export interface Config {
   db: {
     defaultIDType: string;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'header-menu': HeaderMenu;
+    'footer-menu': FooterMenu;
+  };
+  globalsSelect: {
+    'header-menu': HeaderMenuSelect<false> | HeaderMenuSelect<true>;
+    'footer-menu': FooterMenuSelect<false> | FooterMenuSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'user';
@@ -103,6 +164,21 @@ export interface Media {
 export interface Page {
   id: string;
   title: string;
+  description?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
   image?: (string | null) | Media;
   header: {
     type: 'default' | 'featuredImage';
@@ -113,7 +189,6 @@ export interface Page {
       | (
           | Content
           | {
-              blockSettings?: BlockSettings;
               image: string | Media;
               caption?: {
                 root: {
@@ -143,6 +218,14 @@ export interface Page {
    * Placeholder pages are auto-generated and cannot be configured. You can only update the title and meta data.
    */
   isPlaceholder?: boolean | null;
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (string | null) | Media;
+  };
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
@@ -152,7 +235,6 @@ export interface Page {
  * via the `definition` "Content".
  */
 export interface Content {
-  blockSettings?: BlockSettings;
   content: {
     root: {
       type: string;
@@ -171,21 +253,6 @@ export interface Content {
   id?: string | null;
   blockName?: string | null;
   blockType: 'content';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "BlockSettings".
- */
-export interface BlockSettings {
-  margin?: {
-    marginBottom?: ('none' | 'small' | 'medium' | 'large' | 'extraLarge') | null;
-  };
-  padding?: {
-    paddingTop?: ('none' | 'small' | 'medium' | 'large') | null;
-    paddingBottom?: ('none' | 'small' | 'medium' | 'large') | null;
-    paddingLeft?: ('none' | 'small' | 'medium' | 'large') | null;
-    paddingRight?: ('none' | 'small' | 'medium' | 'large') | null;
-  };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -313,6 +380,7 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface PageSelect<T extends boolean = true> {
   title?: T;
+  description?: T;
   image?: T;
   header?:
     | T
@@ -330,7 +398,6 @@ export interface PageSelect<T extends boolean = true> {
               image?:
                 | T
                 | {
-                    blockSettings?: T | BlockSettingsSelect<T>;
                     image?: T;
                     caption?: T;
                     imageSize?: T;
@@ -341,6 +408,13 @@ export interface PageSelect<T extends boolean = true> {
       };
   slug?: T;
   isPlaceholder?: T;
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
@@ -350,29 +424,9 @@ export interface PageSelect<T extends boolean = true> {
  * via the `definition` "Content_select".
  */
 export interface ContentSelect<T extends boolean = true> {
-  blockSettings?: T | BlockSettingsSelect<T>;
   content?: T;
   id?: T;
   blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "BlockSettings_select".
- */
-export interface BlockSettingsSelect<T extends boolean = true> {
-  margin?:
-    | T
-    | {
-        marginBottom?: T;
-      };
-  padding?:
-    | T
-    | {
-        paddingTop?: T;
-        paddingBottom?: T;
-        paddingLeft?: T;
-        paddingRight?: T;
-      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -420,6 +474,70 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header-menu".
+ */
+export interface HeaderMenu {
+  id: string;
+  links?:
+    | {
+        text?: string | null;
+        link?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer-menu".
+ */
+export interface FooterMenu {
+  id: string;
+  links?:
+    | {
+        text?: string | null;
+        link?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "header-menu_select".
+ */
+export interface HeaderMenuSelect<T extends boolean = true> {
+  links?:
+    | T
+    | {
+        text?: T;
+        link?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer-menu_select".
+ */
+export interface FooterMenuSelect<T extends boolean = true> {
+  links?:
+    | T
+    | {
+        text?: T;
+        link?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

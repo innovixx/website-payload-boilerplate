@@ -8,7 +8,6 @@ export const seedPages = async (payload: Payload): Promise<void> => {
   await Promise.all(
     data.map(async (page) => {
       await payload.create({
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
         collection: Page.slug as CollectionSlug,
         data: {
           ...page,

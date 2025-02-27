@@ -26,6 +26,11 @@ export const Page: CollectionConfig = {
       type: 'text',
     },
     {
+      label: 'Page Description',
+      name: 'description',
+      type: 'richText',
+    },
+    {
       label: 'Featured Image',
       name: 'image',
       relationTo: 'media' as CollectionSlug,
@@ -34,7 +39,6 @@ export const Page: CollectionConfig = {
     {
       type: 'tabs',
       admin: {
-        // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
         condition: (_, siblingData) => !siblingData.isPlaceholder,
       },
       tabs: [
@@ -81,7 +85,6 @@ export const Page: CollectionConfig = {
               name: 'blocks',
               type: 'blocks',
               admin: {
-                // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
                 condition: (_, siblingData) => !siblingData.isPlaceholder,
               },
             },
@@ -92,7 +95,6 @@ export const Page: CollectionConfig = {
     {
       admin: {
         position: 'sidebar',
-        // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
         condition: (_, siblingData) => !siblingData.isPlaceholder,
       },
       hooks: {
@@ -110,7 +112,6 @@ export const Page: CollectionConfig = {
       admin: {
         description: 'Placeholder pages are auto-generated and cannot be configured. You can only update the title and meta data.',
         readOnly: true,
-        // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
         condition: (_, siblingData) => !!siblingData.isPlaceholder,
         position: 'sidebar',
       },

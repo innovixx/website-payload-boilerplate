@@ -6,8 +6,10 @@ import { buildConfig } from 'payload';
 import { fileURLToPath } from 'url';
 import sharp from 'sharp';
 import { azureStorage } from '@payloadcms/storage-azure';
+import { seoPlugin } from '@payloadcms/plugin-seo';
 import { Media, Page, User } from './collection';
 import { seed } from './seed';
+import { FooterMenu, HeaderMenu } from './globals';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -24,10 +26,9 @@ export default buildConfig({
 
         let previewUrl = `${baseUrl}/${data.slug}`;
 
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
+
         if (collectionConfig?.slug === 'service' as CollectionSlug) {
           previewUrl = `${baseUrl}/services/${data.slug}`;
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-type-assertion
         } else if (collectionConfig?.slug === 'article' as CollectionSlug) {
           previewUrl = `${baseUrl}/articles/${data.categories?.[0].slug}/${data.slug}`;
         }
@@ -50,6 +51,7 @@ export default buildConfig({
     url: process.env.DATABASE_URI ?? '',
   }),
   editor: lexicalEditor({}),
+  globals: [HeaderMenu, FooterMenu],
   graphQL: {
     schemaOutputFile: path.resolve(dirname, 'lib/schema.graphql'),
   },
@@ -72,7 +74,7 @@ export default buildConfig({
       containerName: `${process.env.AZURE_STORAGE_CONTAINER_NAME}`,
       enabled: process.env.NODE_ENV === 'production',
     }),
-    /*  seoPlugin({
+    seoPlugin({
       collections: [
         'page',
         'article',
@@ -81,7 +83,7 @@ export default buildConfig({
       generateImage: ({ doc }: { doc: { image?: string; header?: { image?: string } } }) => doc.image ?? doc.header?.image ?? '',
       generateTitle: ({ doc }: { doc: { title: string } }) => doc.title,
       uploadsCollection: 'media',
-    }), */
+    }),
   ],
   secret: process.env.PAYLOAD_SECRET ?? '',
   sharp,
