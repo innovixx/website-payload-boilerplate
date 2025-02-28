@@ -8,22 +8,22 @@ const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
 export const seedMedia = async (payload: Payload): Promise<void> => {
-  payload.logger.info('Seeding media...');
+	payload.logger.info('Seeding media...');
 
-  await Promise.all(
-    data.map(async (media) => {
-      await payload.create({
+	await Promise.all(
+		data.map(async (media) => {
+			await payload.create({
 
-        collection: Media.slug as CollectionSlug,
-        data: {
-          ...media,
-          // @ts-expect-error _id is not in the type
-          _id: media.id,
-        },
-        filePath: path.join(dirname, 'assets', media.filename),
-      });
-    }),
-  );
+				collection: Media.slug as CollectionSlug,
+				data: {
+					...media,
+					// @ts-expect-error _id is not in the type
+					_id: media.id,
+				},
+				filePath: path.join(dirname, 'assets', media.filename),
+			});
+		}),
+	);
 
-  payload.logger.info('Seeding media...Done');
+	payload.logger.info('Seeding media...Done');
 };

@@ -225,6 +225,10 @@ export interface Page {
      * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
      */
     image?: (string | null) | Media;
+    /**
+     * Check this box to prevent search engines from indexing this page
+     */
+    noIndex?: boolean | null;
   };
   updatedAt: string;
   createdAt: string;
@@ -414,6 +418,7 @@ export interface PageSelect<T extends boolean = true> {
         title?: T;
         description?: T;
         image?: T;
+        noIndex?: T;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -481,10 +486,15 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface HeaderMenu {
   id: string;
-  links?:
+  menuGroups?:
     | {
         text?: string | null;
-        link?: string | null;
+        links?:
+          | {
+              link: Link;
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -493,14 +503,32 @@ export interface HeaderMenu {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Link".
+ */
+export interface Link {
+  type: 'internal' | 'external';
+  label: string;
+  reference?: {
+    relationTo: 'page';
+    value: string | Page;
+  } | null;
+  url?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "footer-menu".
  */
 export interface FooterMenu {
   id: string;
-  links?:
+  menuGroups?:
     | {
-        text?: string | null;
-        link?: string | null;
+        text: string;
+        links?:
+          | {
+              link: Link;
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
@@ -512,11 +540,16 @@ export interface FooterMenu {
  * via the `definition` "header-menu_select".
  */
 export interface HeaderMenuSelect<T extends boolean = true> {
-  links?:
+  menuGroups?:
     | T
     | {
         text?: T;
-        link?: T;
+        links?:
+          | T
+          | {
+              link?: T | LinkSelect<T>;
+              id?: T;
+            };
         id?: T;
       };
   updatedAt?: T;
@@ -525,14 +558,29 @@ export interface HeaderMenuSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Link_select".
+ */
+export interface LinkSelect<T extends boolean = true> {
+  type?: T;
+  label?: T;
+  reference?: T;
+  url?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "footer-menu_select".
  */
 export interface FooterMenuSelect<T extends boolean = true> {
-  links?:
+  menuGroups?:
     | T
     | {
         text?: T;
-        link?: T;
+        links?:
+          | T
+          | {
+              link?: T | LinkSelect<T>;
+              id?: T;
+            };
         id?: T;
       };
   updatedAt?: T;

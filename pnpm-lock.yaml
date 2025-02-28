@@ -88,8 +88,8 @@ importers:
         specifier: ^2.5.12
         version: 2.5.13(graphql@16.10.0)
       '@innovixx/eslint-config':
-        specifier: ^3.0.7
-        version: 3.0.7(jiti@1.17.1)
+        specifier: ^3.0.8
+        version: 3.0.8(jiti@1.17.1)
       '@types/express':
         specifier: ^4.17.21
         version: 4.17.21
@@ -1097,8 +1097,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@innovixx/eslint-config@3.0.7':
-    resolution: {integrity: sha512-zIR/cSKQrjnYO/ESdKpBGjiqR9WF4SWmexcFKcpmJ0xAsDEnYCsA/UHrE4mW6UKL1kLCZG3hd7F0FAnvxi0kog==}
+  '@innovixx/eslint-config@3.0.8':
+    resolution: {integrity: sha512-3SiBTAaahNpQb9H45/Zkg9xPEPdMkJBlLmwwXN6d1ezP3tOm+qra8IXGDWEIbpqThypiPUtK5XXHZARKdnvszg==}
 
   '@innovixx/payload-drawer-fields@0.0.7':
     resolution: {integrity: sha512-KN1Zy4ZRMekYoztgj0UcS9GywCE5gXfO0SOSa4bFjxUuXQcDopNGedydboH6v09mH9aJfeSzZg73vaqnobIfYA==}
@@ -6296,7 +6296,7 @@ snapshots:
   '@img/sharp-win32-x64@0.33.5':
     optional: true
 
-  '@innovixx/eslint-config@3.0.7(jiti@1.17.1)':
+  '@innovixx/eslint-config@3.0.8(jiti@1.17.1)':
     dependencies:
       '@eslint-react/eslint-plugin': 1.16.1(eslint@9.19.0(jiti@1.17.1))(typescript@5.7.3)
       '@eslint/js': 9.19.0

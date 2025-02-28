@@ -1,11 +1,11 @@
 import type { CollectionConfig } from 'payload';
 
 export const User: CollectionConfig = {
-  access: {
-    read: (): boolean => true,
-  },
-  auth: true,
-  fields: [
-  ],
-  slug: 'user',
+	access: {
+		read: (): boolean => true,
+	},
+	auth: true,
+	fields: [
+	],
+	slug: 'user',
 };
