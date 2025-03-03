@@ -1,0 +1,27 @@
+{
+	"createdAt": "2025-03-03T16:39:10.727Z",
+	"globalType": "header-menu",
+	"links": [
+		{
+			"link": {
+				"type": "internal",
+				"label": "Link 1",
+				"reference": {
+					"relationTo": "page",
+					"value": "67c5931b30bd1b95eb5e176f"
+				}
+			},
+			"id": "67c5db1d7b5a63db6c99d360"
+		},
+		{
+			"link": {
+				"type": "external",
+				"label": "Link 2",
+				"url": "/"
+			},
+			"id": "67c5db277b5a63db6c99d362"
+		}
+	],
+	"updatedAt": "2025-03-03T16:39:10.727Z",
+	"id": "67c5db2e5926ea49ada1d883"
+}

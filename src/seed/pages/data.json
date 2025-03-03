@@ -1,10 +1,43 @@
 [
   {
-    "id": "67ab5b9e7d1f4e5c5b796ced",
-    "title": "Test",
-    "image": "66a964f15446a4d03d16237b",
+    "id": "67c5931b30bd1b95eb5e176f",
+    "createdAt": "2025-03-03T11:31:39.494Z",
+    "updatedAt": "2025-03-03T16:49:35.532Z",
+    "title": "Home",
+    "description": {
+      "root": {
+        "children": [
+          {
+            "children": [
+              {
+                "detail": 0,
+                "format": 0,
+                "mode": "normal",
+                "style": "",
+                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                "type": "text",
+                "version": 1
+              }
+            ],
+            "direction": "ltr",
+            "format": "start",
+            "indent": 0,
+            "type": "paragraph",
+            "version": 1,
+            "textFormat": 0,
+            "textStyle": ""
+          }
+        ],
+        "direction": "ltr",
+        "format": "",
+        "indent": 0,
+        "type": "root",
+        "version": 1
+      }
+    },
     "header": {
-      "type": "default"
+      "type": "featuredImage",
+      "image": "66a964f15446a4d03d16237b"
     },
     "layout": {
       "blocks": [
@@ -20,7 +53,7 @@
                       "format": 0,
                       "mode": "normal",
                       "style": "",
-                      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
                       "type": "text",
                       "version": 1
                     }
@@ -41,20 +74,19 @@
               "version": 1
             }
           },
-          "id": "67ab5b8a1ae811b754a2560d"
+          "id": "67c593966cfd92b13b3f0eaa"
         },
         {
           "blockType": "image",
           "image": "66a964f15446a4d03d16237b",
-          "id": "67ab5b991ae811b754a2560f"
+          "imageSize": "feature",
+          "id": "67c5dd977b5a63db6c99d36a"
         }
       ]
     },
-    "meta": {},
-    "slug": "test",
+    "slug": "home",
     "isPlaceholder": false,
-    "_status": "published",
-    "createdAt": "2025-02-11T14:15:58.320Z",
-    "updatedAt": "2025-02-11T14:15:58.320Z"
+    "meta": {},
+    "_status": "published"
   }
 ]

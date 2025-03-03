@@ -179,7 +179,6 @@ export interface Page {
     };
     [k: string]: unknown;
   } | null;
-  image?: (string | null) | Media;
   header: {
     type: 'default' | 'featuredImage';
     image?: (string | null) | Media;
@@ -385,7 +384,6 @@ export interface MediaSelect<T extends boolean = true> {
 export interface PageSelect<T extends boolean = true> {
   title?: T;
   description?: T;
-  image?: T;
   header?:
     | T
     | {

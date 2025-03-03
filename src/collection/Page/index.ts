@@ -28,12 +28,6 @@ export const Page: CollectionConfig = {
 			type: 'richText',
 		},
 		{
-			label: 'Featured Image',
-			name: 'image',
-			relationTo: 'media' as CollectionSlug,
-			type: 'upload',
-		},
-		{
 			type: 'tabs',
 			admin: {
 				condition: (_, siblingData) => !siblingData.isPlaceholder,

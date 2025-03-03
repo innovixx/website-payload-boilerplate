@@ -1,7 +1,7 @@
 import path from 'path';
 import { mongooseAdapter } from '@payloadcms/db-mongodb';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
-import type { CollectionSlug, Data } from 'payload';
+import type { CollectionSlug } from 'payload';
 import { buildConfig } from 'payload';
 import { fileURLToPath } from 'url';
 import sharp from 'sharp';
@@ -20,9 +20,9 @@ export default buildConfig({
 		importMap: {
 			baseDir: path.resolve(dirname),
 		},
-		user: User.slug,
+		user: 'user',
 		livePreview: {
-			url: ({ data }: { collectionConfig?: { slug: CollectionSlug }; data: Data & { categories?: { slug: string }[] } }) => {
+			url: ({ data }) => {
 				const baseUrl = process.env.CLIENT_URL;
 
 				const previewUrl = `${baseUrl}/${data.slug}`;
@@ -91,4 +91,5 @@ export default buildConfig({
 	typescript: {
 		outputFile: path.resolve(dirname, 'lib/types.ts'),
 	},
+	indexSortableFields: true,
 });

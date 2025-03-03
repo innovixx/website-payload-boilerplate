@@ -1,0 +1,33 @@
+{
+	"createdAt": "2025-03-03T16:39:35.392Z",
+	"globalType": "footer-menu",
+	"menuGroups": [
+		{
+			"text": "Footer Menu",
+			"links": [
+				{
+					"link": {
+						"type": "internal",
+						"label": "Link 1",
+						"reference": {
+							"relationTo": "page",
+							"value": "67c5931b30bd1b95eb5e176f"
+						}
+					},
+					"id": "67c5db387b5a63db6c99d366"
+				},
+				{
+					"link": {
+						"type": "external",
+						"label": "Link 2",
+						"url": "/"
+					},
+					"id": "67c5db3f7b5a63db6c99d368"
+				}
+			],
+			"id": "67c5db337b5a63db6c99d364"
+		}
+	],
+	"updatedAt": "2025-03-03T16:39:35.392Z",
+	"id": "67c5db475926ea49ada1d8d5"
+}
