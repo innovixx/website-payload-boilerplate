@@ -486,15 +486,9 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface HeaderMenu {
   id: string;
-  menuGroups?:
+  links?:
     | {
-        text?: string | null;
-        links?:
-          | {
-              link: Link;
-              id?: string | null;
-            }[]
-          | null;
+        link: Link;
         id?: string | null;
       }[]
     | null;
@@ -540,16 +534,10 @@ export interface FooterMenu {
  * via the `definition` "header-menu_select".
  */
 export interface HeaderMenuSelect<T extends boolean = true> {
-  menuGroups?:
+  links?:
     | T
     | {
-        text?: T;
-        links?:
-          | T
-          | {
-              link?: T | LinkSelect<T>;
-              id?: T;
-            };
+        link?: T | LinkSelect<T>;
         id?: T;
       };
   updatedAt?: T;

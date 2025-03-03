@@ -8,26 +8,13 @@ export const HeaderMenu: GlobalConfig = {
 	},
 	fields: [
 		{
-			name: 'menuGroups',
+			name: 'links',
+			label: 'Links',
 			type: 'array',
 			minRows: 1,
-			maxRows: 4,
+			maxRows: 10,
 			fields: [
-				{
-					name: 'text',
-					label: 'Text',
-					type: 'text',
-				},
-				{
-					name: 'links',
-					label: 'Links',
-					type: 'array',
-					minRows: 1,
-					maxRows: 10,
-					fields: [
-						linkField(),
-					],
-				},
+				linkField(),
 			],
 		},
 	],
