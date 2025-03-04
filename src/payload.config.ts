@@ -16,9 +16,6 @@ const dirname = path.dirname(filename);
 
 export default buildConfig({
 	admin: {
-		importMap: {
-			baseDir: path.resolve(dirname),
-		},
 		user: 'user',
 		livePreview: {
 			url: ({ data }) => {
