@@ -10,7 +10,6 @@ import { seoPlugin } from '@payloadcms/plugin-seo';
 import { Media, Page, User } from './collection';
 import { seed } from './seed';
 import { FooterMenu, HeaderMenu } from './globals';
-import { initialisePages } from './tasks/initialisePages';
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -47,7 +46,6 @@ export default buildConfig({
 		schemaOutputFile: path.resolve(dirname, 'lib/schema.graphql'),
 	},
 	onInit: async (payload) => {
-		initialisePages(payload);
 		if (
 			process.env.NODE_ENV === 'development'
 			&& process.env.PAYLOAD_SEED_DATABASE
