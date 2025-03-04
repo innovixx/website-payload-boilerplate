@@ -9,24 +9,31 @@ export const FooterMenu: GlobalConfig = {
 	fields: [
 		{
 			name: 'menuGroups',
+			label: 'Menu Groups',
 			type: 'array',
 			minRows: 1,
 			maxRows: 4,
 			fields: [
 				{
-					name: 'text',
-					label: 'Text',
-					type: 'text',
-					required: true,
-				},
-				{
-					name: 'links',
-					label: 'Links',
-					type: 'array',
-					minRows: 1,
-					maxRows: 10,
+					name: 'menuGroup',
+					label: 'Menu Group',
+					type: 'group',
 					fields: [
-						linkField(),
+						{
+							name: 'title',
+							label: 'Title',
+							type: 'text',
+						},
+						{
+							name: 'links',
+							label: 'Links',
+							type: 'array',
+							minRows: 1,
+							maxRows: 10,
+							fields: [
+								linkField(),
+							],
+						},
 					],
 				},
 			],

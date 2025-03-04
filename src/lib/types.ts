@@ -514,13 +514,15 @@ export interface FooterMenu {
   id: string;
   menuGroups?:
     | {
-        text: string;
-        links?:
-          | {
-              link: Link;
-              id?: string | null;
-            }[]
-          | null;
+        menuGroup?: {
+          title?: string | null;
+          links?:
+            | {
+                link: Link;
+                id?: string | null;
+              }[]
+            | null;
+        };
         id?: string | null;
       }[]
     | null;
@@ -560,12 +562,16 @@ export interface FooterMenuSelect<T extends boolean = true> {
   menuGroups?:
     | T
     | {
-        text?: T;
-        links?:
+        menuGroup?:
           | T
           | {
-              link?: T | LinkSelect<T>;
-              id?: T;
+              title?: T;
+              links?:
+                | T
+                | {
+                    link?: T | LinkSelect<T>;
+                    id?: T;
+                  };
             };
         id?: T;
       };
