@@ -1,8 +1,7 @@
 [
   {
-    "id": "67c5931b30bd1b95eb5e176f",
     "createdAt": "2025-03-03T11:31:39.494Z",
-    "updatedAt": "2025-03-03T16:49:35.532Z",
+    "updatedAt": "2025-03-04T16:11:32.817Z",
     "title": "Home",
     "description": {
       "root": {
@@ -86,7 +85,12 @@
     },
     "slug": "home",
     "isPlaceholder": false,
-    "meta": {},
-    "_status": "published"
+    "meta": {
+      "title": "Home",
+      "description": "Home page description",
+      "image": "66a964f15446a4d03d16237b"
+    },
+    "_status": "published",
+    "id": "67c5931b30bd1b95eb5e176f"
   }
 ]
