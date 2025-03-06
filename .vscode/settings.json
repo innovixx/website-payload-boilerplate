@@ -2,5 +2,6 @@
   "cSpell.words": [
     "devcontainers",
     "payloadcms"
-  ]
+  ],
+  "eslint.nodePath": "/workspaces/website-fullstack-boilerplate/client/node_modules/@innovixx/eslint-config/node_modules",
 }
