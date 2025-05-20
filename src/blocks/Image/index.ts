@@ -1,8 +1,10 @@
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import type { Block } from 'payload';
+import { blockSetting } from '../../fields';
 
 export const Image: Block = {
 	fields: [
+		blockSetting(),
 		{
 			label: 'Image',
 			name: 'image',

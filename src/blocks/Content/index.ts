@@ -1,7 +1,9 @@
 import type { Block } from 'payload';
+import { blockSetting } from '../../fields';
 
 export const Content: Block = {
 	fields: [
+		blockSetting(),
 		{
 			name: 'content',
 			required: true,
