@@ -18,7 +18,7 @@
     "generate:graphql": "payload generate:graphQLSchema",
     "lint": "eslint ./src/**/*.{js,jsx,ts,tsx}",
     "lint-staged": "lint-staged --verbose",
-    "prepare": "husky"
+    "prepare": "if [ -d node_modules/husky ]; then husky; fi"
   },
   "dependencies": {
     "@azure/storage-blob": "^12.26.0",
