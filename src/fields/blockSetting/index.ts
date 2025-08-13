@@ -123,7 +123,6 @@ export const blockSetting = (overrides?: GroupField): Field => modalFields({
 									value: 'large',
 								},
 							],
-							defaultValue: 'medium',
 							admin: {
 								width: '50%',
 							},
@@ -150,7 +149,6 @@ export const blockSetting = (overrides?: GroupField): Field => modalFields({
 									value: 'large',
 								},
 							],
-							defaultValue: 'medium',
 							admin: {
 								width: '50%',
 							},
