@@ -3,6 +3,8 @@ import { modalFields } from '@innovixx/payload-drawer-fields';
 
 export const blockSetting = (overrides?: GroupField): Field => modalFields({
 	...overrides,
+	// TODO: resolve type mismatch
+	// @ts-expect-error
 	name: 'blockSettings',
 	toggleButtonType: 'blockSettingIcon',
 	label: 'Block Settings',
