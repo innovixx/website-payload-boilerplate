@@ -6,3 +6,5 @@
 declare module '@payloadcms/next/css' {
 	// No exports, just a side-effect import for CSS
 }
+
+declare module '*.scss';
