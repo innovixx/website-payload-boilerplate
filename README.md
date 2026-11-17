@@ -16,7 +16,6 @@ This project serves as a boilerplate for building web applications using Payload
 ### Prerequisites
 
 - Node.js
-- Yarn or npm
 - MongoDB (for Payload CMS)
 
 ### Installation
@@ -34,26 +33,26 @@ cd website-payload-boilerplate
 
 3. Install dependencies:
 ```bash
-yarn install
+pnpm install
 ```
 
 4. Development
 To start the development server, run:
 ```bash
-yarn dev
+pnpm dev
 ```
 
 5. Building for Production
 To build the project for production, run:
 ```bash
-yarn build
+pnpm build
 ```
 This will compile TypeScript files, build Payload, and copy necessary static files to the dist directory.
 
 6. Serving in Production
 To serve the built project in production, run:
 ```bash
-yarn serve
+pnpm serve
 ```
 
 ### Scripts
